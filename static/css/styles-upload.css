@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('/static/imgs/conteudo-aluno-dashboard/img.jpg');
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    transition: all 0.25s linear;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0d0d0d;
+    color: #f2f2f2;
+    padding: 10px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+}
+
+.logo-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+nav {
+    display: flex;
+}
+
+nav a {
+    color: #f2f2f2;
+    text-decoration: none;
+    padding: 10px;
+    margin: 0 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+nav a:hover {
+    background-color: #f2f2f2;
+    color: #0d0d0d;
+}
+
+.tela-container {
+    position: relative;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 5%;
+    width: 80%;
+    color: #f2f2f2;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.tela-container h1 {
+    color: #f2f2f2;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    text-align: center;
+}
+
+
+
+label {
+    color: #f2f2f2;
+}
+
+select, input[type="file"] {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+label, select, input[type="file"] {
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+
+button {
+    padding: 10px 20px;
+    background-color: #f2f2f2;
+    color: #0d0d0d;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    color: #f2f2f2;
+    background-color: #0d0d0d;
+}

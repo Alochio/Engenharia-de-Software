@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload de arquivos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles-upload.css') }}">
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='imgs/treinopro_logo.png') }}" alt="Logo TreinoPro">
+        </div>
+        <nav>
+            <a href="{{ url_for('professor_dashboard') }}">Voltar</a>
+            <a href="{{ url_for('home') }}">Sair</a>
+        </nav>
+    </header>
+    <div class="tela-container">
+        <h1>Upload de Arquivos</h1>
+        <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data">
+            <label for="aluno">Selecione o aluno:</label>
+            <select name="aluno" id="aluno">
+                {% for aluno in alunos %}
+                <option value="{{ aluno.id }}">{{ aluno.nome }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for="tipo_arquivo">Selecione o tipo de arquivo:</label>
+            <select name="tipo_arquivo" id="tipo_arquivo">
+                <option value="avaliacao_fisica">Avaliação Física</option>
+                <option value="plano_alimentar">Plano Alimentar</option>
+                <option value="plano_treino">Plano de Treino</option>
+            </select>
+            <br>
+            <label for="arquivo">Selecione o arquivo:</label>
+            <input type="file" name="arquivo" id="arquivo">
+            <br>
+            <button type="submit">Enviar Arquivo</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('/static/imgs/bg/1.png');
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0d0d0d;
+    color: #f2f2f2;
+    padding: 10px;
+}
+
+.logo-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+nav {
+    display: flex;
+}
+
+nav a {
+    color: #f2f2f2;
+    text-decoration: none;
+    padding: 10px;
+    margin: 0 10px;
+}
+
+nav a:hover {
+    background-color: #f2f2f2;
+    color: #0d0d0d;
+}
+
+.tela-container {
+    margin-top: 5%;
+    width: 80%;
+    color: #f2f2f2;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.tela-container h1 {
+    color: #f2f2f2;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tela-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tela-container table th, .tela-container table td {
+    padding: 10px;
+    text-align: left;
+}
+
+.tela-container table th {
+    border-bottom: 2px solid #333;
+}
+
+.tela-container table td {
+    border-bottom: 1px solid #ddd;
+}
+
+.button {
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0d0d0d;
+    color: #f2f2f2;
+}
+
+

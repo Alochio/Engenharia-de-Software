@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Aluno</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles-aluno-dashboard.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/aluno.js') }}"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='imgs/treinopro_logo.png') }}" alt="Logo TreinoPro">
+        </div>
+        <nav>
+            <a href="{{ url_for('home') }}">Sair</a>
+        </nav>
+    </header>
+
+    <div class="dados">
+        <h1>Bem-vindo, {{ aluno.nome }}</h1>
+        <section id="perfil">
+            <h2>Seu Perfil:</h2>
+            <p><strong>Código do aluno:</strong> {{ aluno.id_aluno}}</p>
+            <p><strong>Nome:</strong> {{ aluno.nome }}</p>
+            <p><strong>Email:</strong> {{ aluno.email }}</p>
+            <p><strong>Nome do professor:</strong> {{ aluno.professor.login}}</p>
+            <p><strong>Código do professor:</strong> {{ aluno.id_professor}}</p>
+        </section>
+        <div class="botao-container">
+            <button class="botao-treino" id="baixar-treino">Baixar ficha de treino</button>
+            <button class="botao-evolucao" id="baixar-avaliacao">Baixar Avaliação fisica</button>
+            <button class="botao-alimentacao" id="baixar-alimentacao">Baixar plano alimentar</button>
+        </div>
+    </div>
+
+</body>
+
+</html>

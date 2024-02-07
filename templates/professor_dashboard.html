@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Personal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles-professor-dashboard.css') }}">
+</head>
+
+<body>
+ 
+<header>
+    <div class="logo-container">
+        <img src="{{ url_for('static', filename='imgs/treinopro_logo.png') }}" alt="Logo TreinoPro">
+    </div>
+    <nav>
+        <a href="{{ url_for('cadastrar_aluno') }}">Cadastrar aluno</a>
+        <a href="{{ url_for('home') }}">Sair</a>
+    </nav>
+</header>
+
+<div class="tela-container">
+    <h1>Lista de Alunos cadastrados:</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID do Aluno</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for aluno in alunos %}
+            <tr>
+                <td>{{ aluno.id_aluno }}</td>
+                <td>{{ aluno.nome }}</td>
+                <td>{{ aluno.email }}</td>
+                <td>{{ aluno.telefone }}</td>
+                <td>
+                    <form action="{{ url_for('upload_arquivos') }}" method="get">
+                        <button class="button" type="submit">Upload</button>
+                    </form>
+                    <form action="{{ url_for('delete_aluno', id=aluno.id_aluno) }}" method="post">
+                        <button class="button" type="submit">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+
+</body>
+
+</html>

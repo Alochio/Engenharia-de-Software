@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Administração</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles-admin.css') }}">
+    <script src="{{ url_for('static', filename='js/admin_dashboard.js') }}"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='imgs/treinopro_logo.png') }}" alt="Logo TreinoPro">
+        </div>
+        <nav>
+            <a href="{{url_for('cadastrar')}}">Cadastrar Personal</a>
+            <a href="{{ url_for('login') }}">Sair</a>
+        </nav>
+    </header>
+
+    <div class="tela-container">
+        <h1>Lista de Personais Trainers cadastrados:</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID do Professor</th>
+                    <th>Login</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for personal_trainer in personal_trainers %}
+                <tr>
+                    <td>{{ personal_trainer.id_professor }}</td>
+                    <td>{{ personal_trainer.login }}</td>
+                    <td>{{ personal_trainer.email }}</td>
+                    <td>{{ personal_trainer.telefone }}</td>
+                    <td>
+                        <form action="{{ url_for('delete_personal_trainer', id=personal_trainer.id_professor) }}" method="post">
+                            <button class="button" type="submit">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    </div>
+</body>
+
+</div>
+
+
+</body>
+
+</html>
