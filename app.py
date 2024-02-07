@@ -246,11 +246,8 @@ def upload_arquivos():
 @app.route('/upload_arquivos', methods=['POST'])
 def upload_file():
     aluno_id = request.form.get('aluno')  # Obtém o ID do aluno selecionado
-    aluno = Aluno.query.get(aluno_id)  # Obtém o aluno pelo ID
 
-    if not aluno:
-        print("Aluno não encontrado para o ID: ", aluno_id)
-        return "Aluno não encontrado"
+    aluno = Aluno.query.get(aluno_id)  # Obtém o aluno pelo ID
 
     tipo_arquivo = request.form.get('tipo_arquivo')  # Obtém o tipo de arquivo selecionado
     arquivo = request.files.get('arquivo')  # Obtém o arquivo enviado pelo formulário
