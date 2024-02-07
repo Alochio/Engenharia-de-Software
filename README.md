@@ -2,7 +2,7 @@
 
 Este é um site desenvolvido para auxiliar na gestão de treinos, permitindo que professores e alunos tenham acesso a informações relevantes, como fichas de treino, avaliações físicas e planos alimentares.
 
-**Documentos das entregas anteriores**
+**Documentos das entregas anteriores:**
    - Os mesmos estão dentro da pasta docs-entregas-anteriores: (Documento de requisitos / Link do Figma / Diagramas).
 
 **Funcionalidades:**
