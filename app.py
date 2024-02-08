@@ -264,9 +264,6 @@ def upload_file():
     return 'Arquivo enviado com sucesso para o aluno {}'.format(aluno.nome)
 
 
-
-###############################################################################################
-
 @app.route('/get_pdf_path', methods=['POST'])
 def get_pdf_path():
 
@@ -300,8 +297,7 @@ def get_pdf_path():
     else:   
         return 'PDF não encontrado para este aluno'
   
-
-
+###############################################################################################
 
 if __name__ == '__main__':
     app.run(debug=True)
