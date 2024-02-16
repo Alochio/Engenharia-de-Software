@@ -16,29 +16,52 @@ class Administrador(db.Model):
     senha = db.Column(db.String(255), nullable=False)
     tipo_conta = db.Column(db.Integer, nullable=False)
 
+class Academia(db.Model):
+    id_academia = db.Column(db.Integer, primary_key=True)
+    login = db.Column(db.String(255), unique=True, nullable=False)
+    senha = db.Column(db.String(255), nullable=False)
+    tipo_conta = db.Column(db.Integer, nullable=False)
+    nome_academia = db.Column(db.String(100), nullable=False)
+    endereco = db.Column(db.String(255), nullable=False)
+    telefone = db.Column(db.String(11), unique=True, nullable=False)
+    cnpj = db.Column(db.String(14), unique=True, nullable=False)
+    foto_perfil = db.Column(db.String(500))
+
 class Professor(db.Model):
     id_professor = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(255), unique=True, nullable=False)
+    login = db.Column(db.String(255), unique=True, nullable=False)
     senha = db.Column(db.String(255), nullable=False)
-    cpf = db.Column(db.String(11), nullable=False)
-    telefone = db.Column(db.String(11), nullable=False)
     tipo_conta = db.Column(db.Integer, nullable=False)
-    login = db.Column(db.String(255), nullable=False)
-
+    nome = db.Column(db.String(255), nullable=False)
+    email = db.Column(db.String(255), unique=True, nullable=False)
+    endereco = db.Column(db.String(255), nullable=False)
+    telefone = db.Column(db.String(11), unique=True, nullable=False)
+    cpf = db.Column(db.String(11), nullable=False)
+    data_nascimento = db.Column(db.Date, nullable=False)
+    id_academia = db.Column(db.Integer, db.ForeignKey('academia.id_academia'))
+    professor = db.relationship('Academia', backref=db.backref('professor', lazy=True))
+    foto_perfil = db.Column(db.String(500))
+    
+    
 class Aluno(db.Model):
     id_aluno = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(255), unique=True, nullable=False)
-    nome = db.Column(db.String(255), nullable=False)
+    login = db.Column(db.String(255), unique=True, nullable=False)
     senha = db.Column(db.String(255), nullable=False)
-    cpf = db.Column(db.String(11), nullable=False)
-    telefone = db.Column(db.String(11), nullable=False)
     tipo_conta = db.Column(db.Integer, nullable=False)
-    login = db.Column(db.String(255), nullable=False)
+    nome = db.Column(db.String(255), nullable=False)
+    email = db.Column(db.String(100), unique=True, nullable=False)
+    endereco = db.Column(db.String(255), nullable=False)
+    telefone = db.Column(db.String(11), unique=True, nullable=False)
+    cpf = db.Column(db.String(11), nullable=False)
+    data_nascimento = db.Column(db.Date, nullable=False)
+    id_academia = db.Column(db.Integer, db.ForeignKey('academia.id_academia'))
+    professor = db.relationship('Academia', backref=db.backref('professor', lazy=True))
     id_professor = db.Column(db.Integer, db.ForeignKey('professor.id_professor'))
     professor = db.relationship('Professor', backref=db.backref('alunos', lazy=True))
-    avaliacao_fisica = db.Column(db.String(255))
-    plano_alimentar = db.Column(db.String(255)) 
-    plano_treino = db.Column(db.String(255))
+    foto_perfil = db.Column(db.String(500))
+    avaliacao_fisica = db.Column(db.String(500))
+    plano_alimentar = db.Column(db.String(500)) 
+    plano_treino = db.Column(db.String(500))
     
 
 with app.app_context():
@@ -68,7 +91,7 @@ def process_cadastro_personal():
     senha = request.form['password']
     cpf = request.form['cpf'].replace('.', '').replace('-', '') 
     telefone = request.form['telefone']
-    tipo_conta = 2
+    tipo_conta = 3
 
     novo_professor = Professor(email=email, senha=senha, cpf=cpf, telefone=telefone, tipo_conta=tipo_conta, login=login)
     db.session.add(novo_professor)
@@ -86,7 +109,7 @@ def process_cadastro_aluno():
         senha = request.form['password']
         cpf = request.form['cpf'].replace('.', '').replace('-', '')  # Remover pontos e traço
         telefone = request.form['telefone']
-        tipo_conta = 3
+        tipo_conta = 4
         id_professor = session.get('usuario_id')
 
         print(id_professor)
@@ -115,7 +138,7 @@ def process_login():
 
     print(login_user)
     print(senha_user)
-    
+
     administrador = Administrador.query.filter_by(login=login_user).first()
     professor = Professor.query.filter_by(login=login_user).first()
     aluno = Aluno.query.filter_by(login=login_user).first()
